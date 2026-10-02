@@ -1,1 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <title>Virimbwe | Websites, Assistance & Budgeting</title>
+
+  <meta
+    name="description"
+    content="Virimbwe offers website development, personal assistance, and budgeting support. Contact Moses Ndovie to discuss your needs."
+  >
+
+  <style>
+    /* =========================
+       COLORS AND GENERAL DESIGN
+       ========================= */
+
+    :root {
+      --blue: #1d5eb1;
+      --navy: #0d2448;
+      --light-blue: #eef4fc;
+      --gray: #4d5e75;
+      --border: #d8e3f1;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--navy);
+      background: var(--white);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 15px;
+      padding: 10px;
+      background: white;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    /* =========================
+       HEADER AND NAVIGATION
+       ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-content {
+      min-height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--blue);
+    }
+
+    .logo-symbol {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--blue);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: Georgia, serif;
+      font-size: 35px;
+      font-style: italic;
+      font-weight: bold;
+    }
+
+    .brand-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 36px;
+      font-style: italic;
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    .menu-button {
+      display: none;
+      padding: 8px 14px;
+      color: var(--navy);
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       BUTTONS
+       ========================= */
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 24px;
+      background: var(--blue);
+      color: white;
+      border: 1px solid var(--blue);
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #164987;
+      border-color: #164987;
+    }
+
+    .button-outline {
+      background: white;
+      color: var(--blue);
+    }
+
+    .button-outline:hover {
+      background: var(--light-blue);
+      color: var(--blue);
+    }
+
+    /* =========================
+       HERO SECTION
+       ========================= */
+
+    .hero {
+      padding: 90px 0;
+      background: linear-gradient(
+        110deg,
+        white 45%,
+        #f0f6ff 100%
+      );
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(44px, 5vw, 70px);
+      font-weight: normal;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 25px;
+    }
+
+    h1 em {
+      color: var(--blue);
+    }
+
+    .hero-description {
+      color: var(--gray);
+      font-size: 18px;
+      max-width: 590px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .hero-panel {
+      padding: 30px;
+      background: white;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--blue);
+      border-radius: 6px;
+      box-shadow: 0 15px 45px rgba(13, 36, 72, 0.06);
+    }
+
+    .hero-panel h2 {
+      font-family: Georgia, serif;
+      font-size: 28px;
+      font-weight: normal;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .panel-item {
+      display: flex;
+      gap: 18px;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .panel-number {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .panel-item h3 {
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .panel-item p {
+      color: var(--gray);
+      font-size: 15px;
+    }
+
+    /* =========================
+       SHARED SECTION STYLES
+       ========================= */
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-heading {
+      font-family: Georgia, serif;
+      font-size: clamp(32px, 4vw, 46px);
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section-description {
+      color: var(--gray);
+      max-width: 680px;
+      margin-bottom: 35px;
+    }
+
+    /* =========================
+       SERVICES
+       ========================= */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+    }
+
+    .service-category {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-family: Georgia, serif;
+      font-size: 26px;
+      font-weight: normal;
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+
+    .service-card p {
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
+    .service-card ul {
+      color: var(--gray);
+      padding-left: 20px;
+      margin-bottom: 25px;
+    }
+
+    .service-card li {
+      margin-bottom: 8px;
+    }
+
+    .service-link {
+      color: var(--blue);
+      font-weight: bold;
+      margin-top: auto;
+      text-underline-offset: 4px;
+    }
+
+    /* =========================
+       PRICING
+       ========================= */
+
+    .pricing-section {
+      background: var(--light-blue);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .price-list {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .price-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 20px;
+      padding: 19px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .price-row:last-child {
+      border-bottom: none;
+    }
+
+    .price-row strong {
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+    .price-row small {
+      display: block;
+      color: var(--gray);
+      font-size: 14px;
+      margin-top: 4px;
+    }
+
+    .pricing-terms {
+      padding: 28px;
+      background: var(--navy);
+      color: white;
+      border-radius: 6px;
+    }
+
+    .pricing-terms h3 {
+      font-family: Georgia, serif;
+      font-size: 27px;
+      font-weight: normal;
+      margin-bottom: 18px;
+    }
+
+    .pricing-terms ul {
+      padding-left: 20px;
+    }
+
+    .pricing-terms li {
+      margin-bottom: 16px;
+      color: #e5edfa;
+    }
+
+    /* =========================
+       ABOUT
+       ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 65px;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      margin-bottom: 18px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .skills span {
+      padding: 7px 12px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: white;
+    }
+
+    /* =========================
+       CONTACT
+       ========================= */
+
+    .contact-section {
+      background: #f8faff;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 65px;
+    }
+
+    .contact-details a {
+      display: block;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: bold;
+      margin: 18px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-form {
+      padding: 30px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+
+    label {
+      display: block;
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      color: var(--navy);
+      background: white;
+      border: 1px solid #b8c8dc;
+      border-radius: 4px;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .form-note {
+      color: var(--gray);
+      font-size: 14px;
+      margin-top: 15px;
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+
+    footer {
+      padding: 28px 0;
+      color: var(--gray);
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    /* =========================
+       TABLET AND MOBILE
+       ========================= */
+
+    @media (max-width: 850px) {
+      .hero-grid,
+      .pricing-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .hero-panel {
+        max-width: 600px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      .header-content {
+        min-height: 78px;
+        flex-wrap: wrap;
+        padding: 12px 0;
+        gap: 10px;
+      }
+
+      .brand-name {
+        font-size: 30px;
+      }
+
+      .logo-symbol {
+        width: 40px;
+        height: 40px;
+        font-size: 29px;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      nav a {
+        padding: 12px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .price-row {
+        gap: 12px;
+        padding: 17px;
+      }
+
+      .service-card,
+      .contact-form {
+        padding: 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container header-content">
+      <a class="brand" href="#main" aria-label="Virimbwe home">
+        <span class="logo-symbol" aria-hidden="true">V</span>
+        <span class="brand-name">Virimbwe</span>
+      </a>
+
+      <button
+        class="menu-button"
+        id="menu-button"
+        type="button"
+        aria-controls="navigation"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#pricing">Fees</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">
+            Websites · Assistance · Budgeting
+          </p>
+
+          <h1>
+            A little support.<br>
+            <em>A clearer way forward.</em>
+          </h1>
+
+          <p class="hero-description">
+            Build your online presence, get help with everyday
+            tasks, or make a practical plan for your money.
+            Virimbwe brings these services together with
+            personal attention.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="button" href="#contact">
+              Discuss your project
+            </a>
+
+            <a class="button button-outline" href="#pricing">
+              View starting fees
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <h2>How can we help?</h2>
+
+          <div class="panel-item">
+            <span class="panel-number">01</span>
+            <div>
+              <h3>Bring your business online</h3>
+              <p>Websites, dashboards, and web applications.</p>
+            </div>
+          </div>
+
+          <div class="panel-item">
+            <span class="panel-number">02</span>
+            <div>
+              <h3>Make room in your day</h3>
+              <p>Errands and personal assistance.</p>
+            </div>
+          </div>
+
+          <div class="panel-item">
+            <span class="panel-number">03</span>
+            <div>
+              <h3>Give your money a plan</h3>
+              <p>Budgeting and money-management support.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <p class="eyebrow">Our services</p>
+
+        <h2 class="section-heading">
+          Practical help, built around you.
+        </h2>
+
+        <p class="section-description">
+          Tell us what you need. We’ll agree on the work,
+          timeline, and price before getting started.
+        </p>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <p class="service-category">DIGITAL SOLUTIONS</p>
+
+            <h3>Website design & development</h3>
+
+            <p>
+              A clear, easy-to-use website that helps people
+              understand your business and contact you.
+            </p>
+
+            <ul>
+              <li>One-page and business websites</li>
+              <li>Mobile-friendly layouts</li>
+              <li>Custom dashboards and web apps</li>
+              <li>Website updates and maintenance</li>
+            </ul>
+
+            <a
+              class="service-link"
+              href="#contact"
+              data-service="Website design & development"
+            >
+              Discuss a website
+            </a>
+          </article>
+
+          <article class="service-card">
+            <p class="service-category">PERSONAL SUPPORT</p>
+
+            <h3>Errands & personal assistance</h3>
+
+            <p>
+              Help with the tasks that take time out of your
+              day, with availability and travel agreed in advance.
+            </p>
+
+            <ul>
+              <li>Shopping and pickups</li>
+              <li>Deliveries and everyday errands</li>
+              <li>Administrative assistance</li>
+              <li>One-time or recurring support</li>
+            </ul>
+
+            <a
+              class="service-link"
+              href="#contact"
+              data-service="Errands & personal assistance"
+            >
+              Ask about assistance
+            </a>
+          </article>
+
+          <article class="service-card">
+            <p class="service-category">MONEY MANAGEMENT</p>
+
+            <h3>Budgeting & financial guidance</h3>
+
+            <p>
+              Understand your income and expenses, set
+              priorities, and build a budget you can follow.
+            </p>
+
+            <ul>
+              <li>Personal budgeting sessions</li>
+              <li>Savings goals and expense tracking</li>
+              <li>Debt-payoff planning</li>
+              <li>Budget spreadsheets and follow-up</li>
+            </ul>
+
+            <a
+              class="service-link"
+              href="#contact"
+              data-service="Budgeting & money management"
+            >
+              Discuss your budget
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEES -->
+    <section id="pricing" class="pricing-section">
+      <div class="container">
+        <p class="eyebrow">Starting fees · USD</p>
+
+        <h2 class="section-heading">
+          Clear prices. An agreed scope.
+        </h2>
+
+        <p class="section-description">
+          These starting fees help you plan. Your final
+          quote depends on the work involved.
+        </p>
+
+        <div class="pricing-grid">
+          <div class="price-list">
+            <div class="price-row">
+              <div>
+                One-page website
+                <small>
+                  Mobile-friendly page, contact details,
+                  and two revision rounds.
+                </small>
+              </div>
+              <strong>$500</strong>
+            </div>
+
+            <div class="price-row">
+              <div>
+                Business website
+                <small>
+                  Up to five pages and two revision rounds.
+                </small>
+              </div>
+              <strong>$1,200</strong>
+            </div>
+
+            <div class="price-row">
+              <div>
+                Custom dashboard or web app
+                <small>
+                  Features and data requirements quoted individually.
+                </small>
+              </div>
+              <strong>From $2,000</strong>
+            </div>
+
+            <div class="price-row">
+              <div>
+                Website maintenance
+                <small>
+                  Up to one hour of small updates per month.
+                </small>
+              </div>
+              <strong>$75/month</strong>
+            </div>
+
+            <div class="price-row">
+              <div>
+                Errands & personal assistance
+                <small>One-hour minimum.</small>
+              </div>
+              <strong>$30/hour</strong>
+            </div>
+
+            <div class="price-row">
+              <div>
+                Budgeting session
+                <small>60-minute session.</small>
+              </div>
+              <strong>$50</strong>
+            </div>
+
+            <div class="price-row">
+              <div>
+                Budget & debt-payoff package
+                <small>
+                  Initial session, budget spreadsheet,
+                  and one follow-up.
+                </small>
+              </div>
+              <strong>$125</strong>
+            </div>
+          </div>
+
+          <aside class="pricing-terms">
+            <h3>Before we begin</h3>
+
+            <ul>
+              <li>
+                Website projects require a 50% deposit.
+                The balance is due before launch.
+              </li>
+
+              <li>
+                Hosting, domains, paid software, purchases,
+                and travel are charged separately when applicable.
+              </li>
+
+              <li>
+                Extra revisions and additional work are
+                quoted before proceeding.
+              </li>
+
+              <li>
+                Service availability and timelines are
+                confirmed when you contact us.
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <p class="eyebrow">Meet Moses</p>
+
+          <h2 class="section-heading">
+            Business understanding.<br>
+            Practical solutions.
+          </h2>
+        </div>
+
+        <div class="about-text">
+          <p>
+            I’m Moses Ndovie. My background combines business
+            analytics, property operations, client service,
+            and web application development.
+          </p>
+
+          <p>
+            I hold a Master of Science in Business Analytics
+            from the University of Tulsa. I use tools such
+            as Power BI, SQL, Python, and Excel to turn
+            information into useful reports and practical
+            business tools.
+          </p>
+
+          <p>
+            Through Virimbwe, I help people and businesses
+            move their projects forward with clear
+            communication and an agreed plan.
+          </p>
+
+          <div class="skills">
+            <span>Business analytics</span>
+            <span>Web development</span>
+            <span>Client support</span>
+            <span>Budgeting support</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">Let’s talk</p>
+
+          <h2 class="section-heading">
+            What do you need help with?
+          </h2>
+
+          <p class="section-description">
+            Call or email Moses to discuss your needs,
+            availability, and a quote.
+          </p>
+
+          <div class="contact-details">
+            <a href="tel:+15396290357">
+              (539) 629-0357
+            </a>
+
+            <a href="mailto:mosesndovi17@gmail.com">
+              mosesndovi17@gmail.com
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+          <label for="customer-name">Your name</label>
+
+          <input
+            id="customer-name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            maxlength="120"
+            required
+          >
+
+          <label for="service">Service</label>
+
+          <select id="service" name="service">
+            <option>Website design & development</option>
+            <option>Custom dashboard or web application</option>
+            <option>Website maintenance</option>
+            <option>Errands & personal assistance</option>
+            <option>Budgeting & money management</option>
+          </select>
+
+          <label for="message">
+            Tell us about your request
+          </label>
+
+          <textarea
+            id="message"
+            name="message"
+            maxlength="4000"
+            required
+          ></textarea>
+
+          <button class="button" type="submit">
+            Open email draft
+          </button>
+
+          <p class="form-note">
+            This opens your email app with your request.
+            Review the draft and send it there. You can
+            also email Moses directly.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <p>
+        © <span id="year">2026</span> Virimbwe.
+      </p>
+
+      <p>
+        Websites · Personal assistance · Budgeting
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    /* =========================
+       MOBILE NAVIGATION
+       ========================= */
+
+    const menuButton = document.getElementById("menu-button");
+    const navigation = document.getElementById("navigation");
+
+    menuButton.addEventListener("click", function () {
+      const isOpen = navigation.classList.toggle("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+    });
+
+    navigation.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navigation.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    /* =========================
+       SELECT A SERVICE
+       ========================= */
+
+    document.querySelectorAll("[data-service]").forEach(
+      function (link) {
+        link.addEventListener("click", function () {
+          document.getElementById("service").value =
+            link.dataset.service;
+        });
+      }
+    );
+
+    /* =========================
+       CURRENT COPYRIGHT YEAR
+       ========================= */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    /* =========================
+       EMAIL INQUIRY FORM
+       ========================= */
+
+    const contactForm = document.getElementById("contact-form");
+
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document
+        .getElementById("customer-name")
+        .value.trim();
+
+      const service = document
+        .getElementById("service")
+        .value;
+
+      const message = document
+        .getElementById("message")
+        .value.trim();
+
+      if (!name || !message) {
+        return;
+      }
+
+      const subject = encodeURIComponent(
+        "Virimbwe inquiry: " + service
+      );
+
+      const body = encodeURIComponent(
+        "Hello Moses,\n\n" +
+        "My name is " + name + ".\n" +
+        "Service: " + service + "\n\n" +
+        message + "\n\n" +
+        "Thank you,\n" +
+        name
+      );
+
+      window.location.href =
+        "mailto:mosesndovi17@gmail.com" +
+        "?subject=" + subject +
+        "&body=" + body;
+    });
+  </script>
+</body>
+</html>
